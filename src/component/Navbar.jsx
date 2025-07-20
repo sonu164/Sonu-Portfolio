@@ -2,11 +2,8 @@ import { useState } from "react";
 import myimg from "../assets/react.svg";
 
 function Navbar() {
-  const [Data, setData] = useState("");
+  const [active, setActive] = useState("home");
 
-  const handleMe = (MyyData) => {
-    setData(MyyData);
-  };
   return (
     <header className="p-3 text-bg-dark">
       <div className="container">
@@ -24,26 +21,38 @@ function Navbar() {
           {/* Right Side - Navigation Links */}
           <ul className="nav nav-pills">
             <li className="nav-item">
-              <a href="#home" className="nav-link active" aria-current="page">
+              <a
+                href="#home"
+                className={`nav-link${active === "home" ? " active" : ""}`}
+                aria-current="page"
+                onClick={() => setActive("home")}
+              >
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a href="#about" className="nav-link">
+              <a
+                href="#about"
+                className={`nav-link${active === "about" ? " active" : ""}`}
+                onClick={() => setActive("about")}
+              >
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a href="#project" className="nav-link">
+              <a
+                href="#project"
+                className={`nav-link${active === "project" ? " active" : ""}`}
+                onClick={() => setActive("project")}
+              >
                 Project
               </a>
             </li>
-            <li className="nav-item" onclick={handleMe(Data)}>
+            <li className="nav-item">
               <a
-                href="#"
-                className={`nav-link ${
-                  Data === "Contact" ? "nav-link active" : " "
-                }`}
+                href="#contact"
+                className={`nav-link${active === "contact" ? " active" : ""}`}
+                onClick={() => setActive("contact")}
               >
                 Contact
               </a>

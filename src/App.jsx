@@ -2,8 +2,8 @@ import Navbar from "./component/Navbar";
 import Home from "./component/home";
 import About from "./component/about";
 import Project from "./component/project";
-import Contact from "./component/Contact";
 import Certificate from "./component/certificate";
+import Contact from "./component/Contact";
 import "./App.css";
 
 function App() {
