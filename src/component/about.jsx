@@ -26,7 +26,7 @@ function About() {
             content related to the stuff that I have learned over the years in{" "}
             <span>Web Development</span> so it can help other people of the Dev
             Community. Feel free to Connect or Follow me on my{" "}
-            <a href="https://github.com/IbrahimHiarea" target="_blank">
+            <a href="https://github.com/sonu164" target="_blank">
               Github
             </a>{" "}
             where I post useful content related to Web Development and
