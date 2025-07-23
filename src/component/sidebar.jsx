@@ -4,14 +4,19 @@ function Sidebar() {
   return (
     <div className="w-11 fixed left-0  bg-gray-200 flex flex-col items-center py-4 space-y-4 mt-20">
       <span className="text-3xl text-blue-600 hover:scale-110 transition">
-        <a href=""></a>
-        <FaFacebook />
+        <a href="">
+          <FaFacebook />
+        </a>
       </span>
       <span className="text-3xl text-blue-700 hover:scale-110 transition">
-        <FaLinkedinIn />
+        <a href="https://www.linkedin.com/feed/">
+          <FaLinkedinIn />
+        </a>
       </span>
       <span className="text-3xl text-black hover:scale-110 transition">
-        <FaGithub />
+        <a style={{ textDecoration: "none" }} href="https://github.com/sonu164">
+          <FaGithub />
+        </a>
       </span>
     </div>
   );

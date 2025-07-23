@@ -26,7 +26,7 @@ function Contact() {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center ">
+    <div className=" min-h-screen flex flex-col items-center justify-center ">
       <h1 className="text-4xl font-bold pt-10 text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-lime-500 to-yellow-400">
         C O N T A C T
       </h1>

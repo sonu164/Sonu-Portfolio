@@ -2,7 +2,7 @@ import Hacker from "../assets/HackerRank.png";
 
 function Certificate() {
   return (
-    <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center">
+    <div className=" min-h-screen flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-lime-500 to-yellow-400">
         C E R T I F I C A T E
       </h1>
