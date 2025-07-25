@@ -13,7 +13,9 @@ function Navbar({ active, setActive, setShowFeedback }) {
               alt="vite"
               style={{ height: "40px", marginRight: "10px" }}
             />
-            <h3 className="text-white mb-0 p-2">SONU</h3>
+            <h3 className="text-white mb-0 p-2 font-serif shadow-2xl shadow-blue-200 transform-border motion">
+              FrontEnd Developer
+            </h3>
           </div>
 
           {/* Right Side - Navigation Links */}
