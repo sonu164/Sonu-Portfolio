@@ -9,7 +9,7 @@ function Sidebar() {
         </a>
       </span>
       <span className="text-3xl text-blue-700 hover:scale-110 transition">
-        <a href="https://www.linkedin.com/feed/">
+        <a href="www.linkedin.com/in/sonu-kumar-7a3b72264">
           <FaLinkedinIn />
         </a>
       </span>
