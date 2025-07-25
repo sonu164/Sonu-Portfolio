@@ -1,6 +1,6 @@
 import Sidebar from "../component/sidebar";
 import Profileimg from "../assets/Profileimg.jpeg";
-import Cv from "../assets/sonuResume.pdf";
+import Cv from "../assets/updateResume.pdf";
 
 function Home() {
   return (
