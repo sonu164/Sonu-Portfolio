@@ -1,9 +1,7 @@
-import { useState } from "react";
 import myimg from "../assets/react.svg";
+import Form from "./Form";
 
-function Navbar() {
-  const [active, setActive] = useState("home");
-
+function Navbar({ active, setActive, setShowFeedback }) {
   return (
     <header className="p-3 text-bg-dark">
       <div className="container">
@@ -25,7 +23,10 @@ function Navbar() {
                 href="#home"
                 className={`nav-link${active === "home" ? " active" : ""}`}
                 aria-current="page"
-                onClick={() => setActive("home")}
+                onClick={() => {
+                  setActive("home");
+                  setShowFeedback(false);
+                }}
               >
                 Home
               </a>
@@ -34,7 +35,10 @@ function Navbar() {
               <a
                 href="#about"
                 className={`nav-link${active === "about" ? " active" : ""}`}
-                onClick={() => setActive("about")}
+                onClick={() => {
+                  setActive("about");
+                  setShowFeedback(false);
+                }}
               >
                 About
               </a>
@@ -43,7 +47,10 @@ function Navbar() {
               <a
                 href="#project"
                 className={`nav-link${active === "project" ? " active" : ""}`}
-                onClick={() => setActive("project")}
+                onClick={() => {
+                  setActive("project");
+                  setShowFeedback(false);
+                }}
               >
                 Project
               </a>
@@ -52,13 +59,26 @@ function Navbar() {
               <a
                 href="#contact"
                 className={`nav-link${active === "contact" ? " active" : ""}`}
-                onClick={() => setActive("contact")}
+                onClick={() => {
+                  setActive("contact");
+                  setShowFeedback(false);
+                }}
               >
                 Contact
               </a>
             </li>
+
+            <button
+              type="button"
+              onClick={() => setShowFeedback(true)}
+              aria-label="Feedback"
+              className="font-semibold  bg-gradient-to-b text-xl text-white transition-all duration-300 hover:from-green-400 hover:to-lime-500 hover:scale-105 hover:mt-6 px-4 py-2 rounded-lg mt-6"
+            >
+              Feedback
+            </button>
           </ul>
         </div>
+        <div></div>
       </div>
     </header>
   );
