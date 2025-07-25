@@ -6,7 +6,6 @@ export const PostList = createContext({
   // isme hame card main jo feature chahiye add like add logic card , post card, delete Card
   PostMe: [],
   AddMe: () => {},
-  DeleteMe: () => {},
 });
 
 // fivth step to create the myUserReducer who dfine in useReducer ok..
@@ -39,12 +38,8 @@ const PostListProvider = ({ children }) => {
     });
   };
 
-  const DeleteMe = (index) => {};
-
   return (
-    <PostList.Provider
-      value={{ PostMe: PostMe, AddMe: AddMe, DeleteMe: DeleteMe }}
-    >
+    <PostList.Provider value={{ PostMe: PostMe, AddMe: AddMe }}>
       {children}
     </PostList.Provider>
   );
