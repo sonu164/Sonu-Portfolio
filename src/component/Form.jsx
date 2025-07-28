@@ -1,8 +1,9 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { PostList } from "../store/PostList";
 
 function Form() {
   const { AddMe } = useContext(PostList);
+  const [success, setSucess] = useState(false);
 
   const userName = useRef();
   const userLast = useRef();
@@ -23,6 +24,10 @@ function Form() {
     userLast.current.value = " ";
     userEmail.current.value = " ";
     userFeedback.current.value = " ";
+
+    setSucess(true);
+
+    setTimeout(() => setSucess(false), 8000);
   };
 
   return (
@@ -31,6 +36,13 @@ function Form() {
         <h2 className="text-2xl font-bold mb-6 text-center text-indigo-700">
           Feedback Form
         </h2>
+        {success && (
+          <div>
+            <div class="alert alert-success" role="alert">
+              Thanks for Gives Your Valueable Feedback...&#128516;
+            </div>
+          </div>
+        )}
         <form className="space-y-4 " onSubmit={handleMyForm}>
           {/* First Name */}
           <div>
