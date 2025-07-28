@@ -3,7 +3,7 @@ import Form from "./Form";
 
 function Navbar({ active, setActive, setShowFeedback }) {
   return (
-    <header className="p-3 text-bg-dark">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <div className="container">
         <div className="d-flex justify-content-between align-items-center overflow-hidden">
           {/* Left Side - Image + Text */}

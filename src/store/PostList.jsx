@@ -1,57 +1,80 @@
-// create the CreateContext
+import { ref, push, onValue } from "firebase/database";
+import { db } from "../firebase.config.js";
+import { createContext, useReducer, useEffect } from "react";
 
-import { createContext, useReducer } from "react";
-
+// 1. Create Context
 export const PostList = createContext({
-  // isme hame card main jo feature chahiye add like add logic card , post card, delete Card
   PostMe: [],
   AddMe: () => {},
 });
 
-// fivth step to create the myUserReducer who dfine in useReducer ok..
-// iska use ham action and currpost ke liye karte hai pk ..
-const myUserReducer = (myCurrPost, action) => {
+// 2. Reducer
+const myUserReducer = (state, action) => {
   if (action.type === "Add_Post") {
-    return [action.payload, ...myCurrPost];
+    return [action.payload, ...state];
   }
 
-  return myCurrPost;
+  if (action.type === "Load_Posts") {
+    return action.payload;
+  }
+
+  return state;
 };
 
-// third ab PostList ko Provider mian add karge
+// 3. Provider
 const PostListProvider = ({ children }) => {
-  // fouth step create  the UseReducer
-
   const [PostMe, DispatchData] = useReducer(myUserReducer, []);
 
-  // Define AddMe and DeleteMe functions
+  // AddMe Function (to push into Firebase and local state)
   const AddMe = (firstName, lastName, email, feedback) => {
-    DispatchData({
+    const feedbackData = {
+      firstName,
+      lastName,
+      email,
+      feedback,
+      createdAt: new Date().toISOString(),
+    };
+
+    // Push to Firebase Realtime DB
+    const feedbackRef = ref(db, "feedbacks");
+    push(feedbackRef, feedbackData);
+
+    // Optional: Add to local immediately
+    /*    DispatchData({
       type: "Add_Post",
       payload: {
-        id: Date.now(), // for future use
-        firstName,
-        lastName,
-        email,
-        feedback,
+        id: Date.now(),
+        ...feedbackData,
       },
-    });
+    }); */
   };
 
+  // Fetch feedback from Firebase
+  useEffect(() => {
+    const myFeedback = ref(db, "feedbacks");
+
+    const unsubscribe = onValue(myFeedback, (snapshot) => {
+      const data = snapshot.val();
+
+      if (data) {
+        const feedbackList = Object.keys(data).map((key) => ({
+          id: key,
+          ...data[key],
+        }));
+
+        DispatchData({
+          type: "Load_Posts",
+          payload: feedbackList.reverse(), // latest first
+        });
+      }
+    });
+
+    return () => unsubscribe(); // cleanup
+  }, []);
+
   return (
-    <PostList.Provider value={{ PostMe: PostMe, AddMe: AddMe }}>
-      {children}
-    </PostList.Provider>
+    <PostList.Provider value={{ PostMe, AddMe }}>{children}</PostList.Provider>
   );
 };
 
 export default PostListProvider;
-// now sixth stap add first dummy data from store ok --
-/* const DEFAULT_DATA = [
-  {
-    firstName: "Anjali",
-    lastName: "Gupta",
-    email: "anjali.g@email.com",
-    feedback: "Feedback system is really nice. UX is awesome!",
-  },
-]; */
